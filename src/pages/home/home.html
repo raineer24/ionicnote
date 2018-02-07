@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      My notes
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let note of notes">
+      {{ note.title }}
+    </button>
+  </ion-list>
+  <button ion-button (click)="addNote()">Add note</button>
+ </ion-content>
