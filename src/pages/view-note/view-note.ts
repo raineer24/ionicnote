@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ViewNotePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { NoteService } from "../../providers/note-service/note-service";
+import { Note } from "../../models/note.model";
 
 @IonicPage()
 @Component({
@@ -14,12 +9,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'view-note.html',
 })
 export class ViewNotePage {
+  note: Note;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private noteService: NoteService) {
+    this.note = this.navParams.get('note');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ViewNotePage');
+  deleteNote(createDate: number) {
+    this.noteService.deleteNote(createDate);
+    this.navCtrl.pop();
   }
 
 }
